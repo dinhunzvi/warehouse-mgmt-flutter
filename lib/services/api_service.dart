@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:varichem_warehouse/models/bin_locations.dart';
+import 'package:varichem_warehouse/models/bin_location.dart';
 import 'package:varichem_warehouse/models/goods_received_voucher.dart';
 import 'package:varichem_warehouse/models/measurement_unit.dart';
 import 'package:varichem_warehouse/models/product.dart';

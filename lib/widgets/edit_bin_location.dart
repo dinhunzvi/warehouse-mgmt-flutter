@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:varichem_warehouse/models/bin_locations.dart';
+import 'package:varichem_warehouse/models/bin_location.dart';
 
 class EditBinLocation extends StatefulWidget {
   final Function binLocationCallback;

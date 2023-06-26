@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:varichem_warehouse/models/bin_locations.dart';
+import 'package:varichem_warehouse/models/bin_location.dart';
 import 'package:varichem_warehouse/models/measurement_unit.dart';
 import 'package:varichem_warehouse/providers/bin_location_provider.dart';
 import 'package:varichem_warehouse/providers/measurement_unit_provider.dart';

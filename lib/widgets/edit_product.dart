@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:varichem_warehouse/models/product.dart';
 
-import '../models/bin_locations.dart';
+import '../models/bin_location.dart';
 import '../models/measurement_unit.dart';
 import '../providers/bin_location_provider.dart';
 import '../providers/measurement_unit_provider.dart';

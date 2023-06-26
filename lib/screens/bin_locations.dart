@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:varichem_warehouse/models/bin_locations.dart';
+import 'package:varichem_warehouse/models/bin_location.dart';
 import 'package:varichem_warehouse/providers/bin_location_provider.dart';
 import 'package:varichem_warehouse/widgets/add_bin_location.dart';
 import 'package:varichem_warehouse/widgets/edit_bin_location.dart';

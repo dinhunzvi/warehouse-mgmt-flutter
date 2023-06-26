@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:varichem_warehouse/providers/auth_provider.dart';
 import 'package:varichem_warehouse/services/api_service.dart';
 
-import '../models/bin_locations.dart';
+import '../models/bin_location.dart';
 
 class BinLocationProvider extends ChangeNotifier {
   List<BinLocation> binLocations = [];
