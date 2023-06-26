@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:varichem_warehouse/models/bin_locations.dart';
+import 'package:varichem_warehouse/models/goods_received_voucher.dart';
 import 'package:varichem_warehouse/models/measurement_unit.dart';
 import 'package:varichem_warehouse/models/product.dart';
 
@@ -203,20 +204,37 @@ class ApiService {
     return MeasurementUnit.fromJson(jsonDecode(response.body));
   }
 
-  Future<MeasurementUnit> updateMeasurementUnit( MeasurementUnit measurementUnit)
-  async {
-    http.Response response = await
-    http.put( Uri.parse('${baseUrl}measurement-units/${measurementUnit.id.toString()}'),
-    headers: {
-      HttpHeaders.authorizationHeader: 'Bearer $token',
+  Future<MeasurementUnit> updateMeasurementUnit(
+      MeasurementUnit measurementUnit) async {
+    http.Response response = await http.put(
+        Uri.parse(
+            '${baseUrl}measurement-units/${measurementUnit.id.toString()}'),
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.acceptHeader: 'application/json',
+          HttpHeaders.contentTypeHeader: 'application/json'
+        });
+
+    if (response.statusCode != 200) {
+      throw Exception('Error updating measurement unit');
+    }
+
+    return MeasurementUnit.fromJson(jsonDecode(response.body));
+  }
+
+  Future<List<GoodsReceivedVoucher>> getGoodsReceivedVouchers() async {
+    http.Response response = await http
+        .get(Uri.parse('${baseUrl}goods-received-vouchers'), headers: {
+      // HttpHeaders.authorizationHeader: 'Bearer $token',
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.contentTypeHeader: 'application/json'
     });
 
-    if ( response.statusCode != 200 ) {
-      throw Exception( 'Error updating measurement unit');
-    }
+    List goodsReceivedVouchers = jsonDecode(response.body);
 
-    return MeasurementUnit.fromJson(jsonDecode(response.body));
+    return goodsReceivedVouchers
+        .map((goodsReceivedVoucher) =>
+            GoodsReceivedVoucher.fromJson(goodsReceivedVoucher))
+        .toList();
   }
 }
