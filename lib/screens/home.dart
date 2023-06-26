@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List<Widget> widgetOptions = const [ MeasurementUnits(), BinLocations(),
+  List<Widget> widgetOptions = const [ BinLocations(), MeasurementUnits(),
     Products(), GoodsReceivedVouchers() ];
 
   int selectedIndex = 0;
