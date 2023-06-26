@@ -5,15 +5,16 @@ class EditMeasurementUnit extends StatefulWidget {
   final Function measurementUnitCallback;
   final MeasurementUnit measurementUnit;
 
-  const EditMeasurementUnit({required this.measurementUnit, required this.measurementUnitCallback,super.key });
+  const EditMeasurementUnit(
+      {required this.measurementUnit,
+      required this.measurementUnitCallback,
+      super.key});
 
   @override
   State<EditMeasurementUnit> createState() => _EditMeasurementUnit();
-
 }
 
 class _EditMeasurementUnit extends State<EditMeasurementUnit> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final codeController = TextEditingController();
@@ -23,7 +24,6 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
 
   @override
   void initState() {
-
     codeController.text = widget.measurementUnit.code.toString();
     nameController.text = widget.measurementUnit.name.toString();
 
@@ -33,7 +33,7 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only( top: 50, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
       child: Form(
         key: _formKey,
         child: Column(
@@ -43,31 +43,31 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
               decoration: const InputDecoration(
                 hintText: 'Name',
               ),
-              validator: ( String? value ) {
-                if ( value!.isEmpty ) {
+              validator: (String? value) {
+                if (value!.isEmpty) {
                   return 'Name is required';
                 }
 
                 return null;
               },
-              onChanged: ( text) => setState(() {
+              onChanged: (text) => setState(() {
                 errorMessage = '';
               }),
             ),
-            const SizedBox( height: 15),
+            const SizedBox(height: 15),
             TextFormField(
               controller: codeController,
               decoration: const InputDecoration(
                 hintText: 'Code',
               ),
-              validator: ( String? value ) {
-                if ( value!.isEmpty ) {
+              validator: (String? value) {
+                if (value!.isEmpty) {
                   return 'Measurement code is required';
                 }
 
                 return null;
               },
-              onChanged: ( text) => setState(() {
+              onChanged: (text) => setState(() {
                 errorMessage = '';
               }),
             ),
@@ -76,8 +76,8 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
               children: <Widget>[
                 MaterialButton(
                   onPressed: () => editMeasurementUnit(context),
-                  child: const Text( 'Save'),),
-
+                  child: const Text('Save'),
+                ),
                 MaterialButton(
                   onPressed: () => Navigator.pop(context),
                   child: const Text('Cancel'),
@@ -86,21 +86,21 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
             )
           ],
         ),
-
-      ),);
+      ),
+    );
   }
 
-  Future editMeasurementUnit( context ) async {
+  Future editMeasurementUnit(context) async {
     final form = _formKey.currentState;
 
-    if ( !form!.validate()) {
+    if (!form!.validate()) {
       return;
     }
 
     widget.measurementUnit.code = codeController.text;
     widget.measurementUnit.name = nameController.text;
 
-    await widget.measurementUnitCallback( widget.measurementUnit);
+    await widget.measurementUnitCallback(widget.measurementUnit);
 
     Navigator.pop(context);
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:varichem_warehouse/models/measurement_unit.dart';
 
 class AddMeasurementUnit extends StatefulWidget {
   final Function measurementUnitCallback;
@@ -87,7 +86,7 @@ class _AddMeasurementUnit extends State<AddMeasurementUnit> {
       return;
     }
 
-    widget.measurementUnitCallback(
+    await widget.measurementUnitCallback(
       nameController.text, codeController.text
     );
 
