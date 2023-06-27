@@ -78,13 +78,15 @@ class _EditProductState extends State<EditProduct> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  MaterialButton(
-                    onPressed: () => updateProduct(context),
-                    child: const Text( 'Save'),),
-
-                  MaterialButton(
+                  ElevatedButton(
+                      onPressed: () => updateProduct(context),
+                      child: const Text( 'Save' )),
+                  ElevatedButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel'),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red
+                    ),
+                    child: const Text( 'Cancel' ),
                   )
                 ],
               )

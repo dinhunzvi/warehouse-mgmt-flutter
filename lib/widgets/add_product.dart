@@ -64,13 +64,15 @@ class _AddProductState extends State<AddProduct> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  MaterialButton(
-                    onPressed: () => addProduct(context),
-                    child: const Text( 'Save'),),
-                  
-                  MaterialButton(
-                      onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancel'),
+                  ElevatedButton(
+                      onPressed: () => addProduct(context),
+                      child: const Text( 'Save' )),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red
+                    ),
+                    child: const Text( 'Cancel' ),
                   )
                 ],
               )

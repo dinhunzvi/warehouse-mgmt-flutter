@@ -43,13 +43,15 @@ class _AddBinLocationState extends State<AddBinLocation> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  MaterialButton(
-                    onPressed: () => addBinLocation(context),
-                    child: const Text('Save'),
-                  ),
-                  MaterialButton(
+                  ElevatedButton(
+                      onPressed: () => addBinLocation(context),
+                      child: const Text( 'Save' )),
+                  ElevatedButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Cancel'),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red
+                    ),
+                    child: const Text( 'Cancel' ),
                   )
                 ],
               )
