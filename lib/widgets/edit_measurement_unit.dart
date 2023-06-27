@@ -74,13 +74,15 @@ class _EditMeasurementUnit extends State<EditMeasurementUnit> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                MaterialButton(
-                  onPressed: () => editMeasurementUnit(context),
-                  child: const Text('Save'),
-                ),
-                MaterialButton(
+                ElevatedButton(
+                    onPressed: () => editMeasurementUnit(context),
+                    child: const Text( 'Save' )),
+                ElevatedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancel'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red
+                  ),
+                  child: const Text( 'Cancel' ),
                 )
               ],
             )

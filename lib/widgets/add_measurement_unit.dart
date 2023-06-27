@@ -63,13 +63,15 @@ class _AddMeasurementUnit extends State<AddMeasurementUnit> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            MaterialButton(
-              onPressed: () => addMeasurementUnit(context),
-              child: const Text( 'Save'),),
-
-            MaterialButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
+            ElevatedButton(
+                onPressed: () => addMeasurementUnit(context),
+                child: const Text( 'Save' )),
+            ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red
+              ),
+                child: const Text( 'Cancel' ),
             )
           ],
         )
