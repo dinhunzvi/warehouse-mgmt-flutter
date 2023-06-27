@@ -42,8 +42,8 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               title: 'Varichem Pharmaceuticals',
               theme: ThemeData(
-                scaffoldBackgroundColor: Colors.white,
-                primarySwatch: Colors.blue,
+                //scaffoldBackgroundColor: Colors.black87,
+                primarySwatch: Colors.purple,
                 elevatedButtonTheme: ElevatedButtonThemeData(
                     style: ElevatedButton.styleFrom(
                         minimumSize: const Size(double.infinity, 48),
