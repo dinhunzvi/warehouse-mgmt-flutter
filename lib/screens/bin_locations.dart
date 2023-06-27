@@ -60,7 +60,9 @@ class _BinLocationsState extends State<BinLocations> {
                 builder: ( BuildContext context ) {
                 return AddBinLocation(binLocationCallback: provider.addBinLocation);
                 });
-          }),
+          },
+        child: const Icon( Icons.add ),
+      ),
     );
   }
 
