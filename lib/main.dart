@@ -62,7 +62,6 @@ class MyApp extends StatelessWidget {
                         borderSide:
                             const BorderSide(color: Color(0xFFF2994A)))),
               ),
-              home: const Home(),
               debugShowCheckedModeBanner: false,
               routes: {
                 '/': (context) {
