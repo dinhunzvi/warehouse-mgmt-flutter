@@ -18,7 +18,7 @@ class _BinLocationsState extends State<BinLocations> {
   @override
   Widget build(BuildContext context) {
   final provider = Provider.of<BinLocationProvider>( context, listen: true);
-  List<BinLocation> binLocations = provider.allBinLocations();
+  List<BinLocation> binLocations = provider.allBinLocations;
 
     return Scaffold(
       appBar: AppBar(

@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
             elevation: 0,
               currentIndex: selectedIndex,
               onTap: onTapped,
-              backgroundColor: Colors.black87,
+              backgroundColor: Colors.blueAccent,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   label: 'Bin locations',

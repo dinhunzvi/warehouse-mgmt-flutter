@@ -17,7 +17,7 @@ class _ProductsState extends State<Products> {
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductProvider>(context, listen: true);
 
-    List<Product> products = provider.allProducts();
+    List<Product> products = provider.allProducts;
 
     return Scaffold(
       appBar: AppBar(

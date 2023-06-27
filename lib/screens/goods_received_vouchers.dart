@@ -18,7 +18,7 @@ class _GoodsReceivedVouchers extends State<GoodsReceivedVouchers> {
     final provider = Provider.of<GoodsReceivedVoucherProvider>( context, listen: true);
 
     List<GoodsReceivedVoucher> goodsReceivedVouchers =
-    provider.allGoodsReceivedVouchers();
+    provider.allGoodsReceivedVouchers;
 
     return Scaffold(
       appBar: AppBar(

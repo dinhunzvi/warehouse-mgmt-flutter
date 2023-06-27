@@ -18,7 +18,7 @@ class _MeasurementUnitsState extends State<MeasurementUnits> {
   Widget build(BuildContext context) {
     final provider = Provider.of<MeasurementUnitProvider>( context, listen: true);
     
-    List<MeasurementUnit> measurementUnits = provider.allMeasurementUnits();
+    List<MeasurementUnit> measurementUnits = provider.allMeasurementUnits;
     
     return Scaffold(
       appBar: AppBar(
