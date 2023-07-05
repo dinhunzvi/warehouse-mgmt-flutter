@@ -33,10 +33,6 @@ class _ProductsState extends State<Products> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[Text('Location ${product.binLocation}')],
-                  ),
                   IconButton(
                       onPressed: () {
                         showModalBottomSheet(

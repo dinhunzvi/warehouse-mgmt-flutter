@@ -29,10 +29,9 @@ class ProductProvider extends ChangeNotifier {
 
   }
 
-  Future<void> addProduct( int measurementUnitId, int binLocationId,
-      String name, String code ) async {
+  Future<void> addProduct( int measurementUnitId, String name, String code ) async {
     Product product = await
-    apiService.addProduct(measurementUnitId, binLocationId, name, code);
+    apiService.addProduct(measurementUnitId, name, code);
     products.add( product);
 
     notifyListeners();

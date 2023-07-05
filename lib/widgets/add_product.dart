@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:varichem_warehouse/models/bin_location.dart';
 import 'package:varichem_warehouse/models/measurement_unit.dart';
-import 'package:varichem_warehouse/providers/bin_location_provider.dart';
 import 'package:varichem_warehouse/providers/measurement_unit_provider.dart';
 
 class AddProduct extends StatefulWidget {
@@ -33,8 +31,6 @@ class _AddProductState extends State<AddProduct> {
         key: _formKey,
           child: Column(
             children: <Widget>[
-              buildBinLocationsDropdown(),
-              const SizedBox( height: 24 ),
               buildMeasurementUnitsDropdown(),
               const SizedBox( height: 24 ),
               TextFormField(
@@ -80,45 +76,6 @@ class _AddProductState extends State<AddProduct> {
           )),
     );
 
-  }
-
-  Widget buildBinLocationsDropdown() {
-    return Consumer<BinLocationProvider>(
-      builder: ( context, cProvider, child) {
-        List<BinLocation> binLocations = cProvider.binLocations;
-
-        return DropdownButtonFormField(
-          elevation: 8,
-          items: binLocations.map<DropdownMenuItem<String>>((e) {
-            return DropdownMenuItem<String>(
-                value: e.id.toString(),
-                child: Text(e.name,
-                  style: const TextStyle(
-                      color: Colors.black, fontSize: 20.0
-                  ),));
-          }).toList(),
-          onChanged: ( String? newValue) {
-            if ( newValue == null) {
-              return;
-            }
-
-            setState(() {
-              binLocationController.text = newValue.toString();
-            });
-          },
-          decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Bin location'
-          ),
-          dropdownColor: Colors.white,
-          validator: ( value) {
-            if ( value  == null ) {
-              return 'Select bin location';
-            }
-          },
-        );
-      },
-    );
   }
 
   Widget buildMeasurementUnitsDropdown() {
@@ -171,7 +128,6 @@ class _AddProductState extends State<AddProduct> {
 
     await widget.productCallback(
       measurementUnitController.text,
-      binLocationController.text,
       productNameController.text,
       productCodeController.text
     );

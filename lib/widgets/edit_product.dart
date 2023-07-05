@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:varichem_warehouse/models/product.dart';
-
-import '../models/bin_location.dart';
 import '../models/measurement_unit.dart';
-import '../providers/bin_location_provider.dart';
 import '../providers/measurement_unit_provider.dart';
 
 class EditProduct extends StatefulWidget {
@@ -25,7 +22,6 @@ class _EditProductState extends State<EditProduct> {
   final productNameController = TextEditingController();
   final productCodeController = TextEditingController();
   final measurementUnitController = TextEditingController();
-  final binLocationController = TextEditingController();
 
   String errorMessage = '';
 
@@ -34,7 +30,6 @@ class _EditProductState extends State<EditProduct> {
     productCodeController.text = widget.product.code.toString();
     productNameController.text = widget.product.name.toString();
     measurementUnitController.text = widget.product.measurementUnitName.toString();
-    binLocationController.text = widget.product.binLocation.toString();
 
     super.initState();
   }
@@ -47,8 +42,6 @@ class _EditProductState extends State<EditProduct> {
           key: _formKey,
           child: Column(
             children: <Widget>[
-              buildBinLocationsDropdown(),
-              const SizedBox( height: 24 ),
               buildMeasurementUnitsDropdown(),
               const SizedBox( height: 24 ),
               TextFormField(
@@ -94,45 +87,6 @@ class _EditProductState extends State<EditProduct> {
           )),
     );
 
-  }
-
-  Widget buildBinLocationsDropdown() {
-    return Consumer<BinLocationProvider>(
-      builder: ( context, cProvider, child) {
-        List<BinLocation> binLocations = cProvider.binLocations;
-
-        return DropdownButtonFormField(
-          elevation: 8,
-          items: binLocations.map<DropdownMenuItem<String>>((e) {
-            return DropdownMenuItem<String>(
-                value: e.id.toString(),
-                child: Text(e.name,
-                  style: const TextStyle(
-                      color: Colors.black, fontSize: 20.0
-                  ),));
-          }).toList(),
-          onChanged: ( String? newValue) {
-            if ( newValue == null) {
-              return;
-            }
-
-            setState(() {
-              binLocationController.text = newValue.toString();
-            });
-          },
-          decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Bin location'
-          ),
-          dropdownColor: Colors.white,
-          validator: ( value) {
-            if ( value  == null ) {
-              return 'Select bin location';
-            }
-          },
-        );
-      },
-    );
   }
 
   Widget buildMeasurementUnitsDropdown() {
@@ -185,7 +139,6 @@ class _EditProductState extends State<EditProduct> {
 
     widget.product.name = productNameController.text;
     widget.product.code = productCodeController.text;
-    widget.product.binLocationId = int.parse(binLocationController.text);
     widget.product.measurementUnitId = int.parse(measurementUnitController.text);
 
     await widget.productCallBack( widget.product);
