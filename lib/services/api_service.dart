@@ -46,7 +46,6 @@ class ApiService {
     if (response.statusCode == 422) {
       Map<String, dynamic> body = jsonDecode(response.body);
       Map<String, dynamic> errors = body['errors'];
-
       String errorMessage = '';
 
       errors.forEach((key, value) {
@@ -54,7 +53,9 @@ class ApiService {
           errorMessage += element + '\n';
         });
       });
+      print('My error message' );
       throw Exception(errorMessage);
+
     }
 
     return Product.fromJson(jsonDecode(response.body));

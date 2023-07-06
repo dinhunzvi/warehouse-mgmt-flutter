@@ -69,6 +69,10 @@ class _AddProductState extends State<AddProduct> {
                         backgroundColor: Colors.red
                     ),
                     child: const Text( 'Cancel' ),
+                  ),
+                  Text(
+                    errorMessage,
+                    style: const TextStyle(color: Colors.red),
                   )
                 ],
               )

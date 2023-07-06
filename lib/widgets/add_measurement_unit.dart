@@ -72,8 +72,13 @@ class _AddMeasurementUnit extends State<AddMeasurementUnit> {
                 backgroundColor: Colors.red
               ),
                 child: const Text( 'Cancel' ),
-            )
+            ),
+
           ],
+        ),
+        Text(
+          errorMessage,
+          style: const TextStyle(color: Colors.red),
         )
       ],
       ),
