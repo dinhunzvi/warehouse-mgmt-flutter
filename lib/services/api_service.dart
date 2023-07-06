@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:varichem_warehouse/models/bin_location.dart';
 import 'package:varichem_warehouse/models/goods_received_voucher.dart';
 import 'package:varichem_warehouse/models/measurement_unit.dart';
 import 'package:varichem_warehouse/models/product.dart';
+import 'package:varichem_warehouse/models/raw_material.dart';
 
 class ApiService {
   late final String token;
 
-  final String baseUrl = "http://192.168.137.208:8000/api/";
+  final String baseUrl = "http://192.168.1.31:8000/api/";
 
   ApiService(this.token);
 
@@ -29,7 +29,8 @@ class ApiService {
     return products.map((product) => Product.fromJson(product)).toList();
   }
 
-  Future<Product> addProduct(int measurementUnitId, String name, String code) async {
+  Future<Product> addProduct(
+      int measurementUnitId, String name, String code) async {
     http.Response response = await http.post(Uri.parse('${baseUrl}products'),
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
@@ -223,7 +224,7 @@ class ApiService {
   Future<List<GoodsReceivedVoucher>> getGoodsReceivedVouchers() async {
     http.Response response = await http
         .get(Uri.parse('${baseUrl}goods-received-vouchers'), headers: {
-      // HttpHeaders.authorizationHeader: 'Bearer $token',
+      HttpHeaders.authorizationHeader: 'Bearer $token',
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.contentTypeHeader: 'application/json'
     });
@@ -234,5 +235,68 @@ class ApiService {
         .map((goodsReceivedVoucher) =>
             GoodsReceivedVoucher.fromJson(goodsReceivedVoucher))
         .toList();
+  }
+
+  Future<List<RawMaterial>> getRawMaterials() async {
+    http.Response response =
+        await http.get(Uri.parse('${baseUrl}raw-materials'), headers: {
+      HttpHeaders.acceptHeader: 'application/json',
+      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader: 'Bearer $token'
+    });
+
+    List rawMaterials = jsonDecode(response.body);
+
+    return rawMaterials
+        .map((rawMaterial) => RawMaterial.fromJSON(rawMaterial))
+        .toList();
+  }
+
+  Future<RawMaterial> addRawMaterial(
+      int measurementUnitId, int binLocationId, String name) async {
+    http.Response response =
+        await http.post(Uri.parse('${baseUrl}raw-materials'),
+            headers: {
+              HttpHeaders.authorizationHeader: 'Bearer $token',
+              HttpHeaders.acceptHeader: 'application/json',
+              HttpHeaders.contentTypeHeader: 'application/json'
+            },
+            body: jsonEncode({
+              'measurement_unit_id': measurementUnitId,
+              'bin_location_id': binLocationId,
+              'name': name
+            }));
+
+    if (response.statusCode == 422) {
+      Map<String, dynamic> body = jsonDecode(response.body);
+      Map<String, dynamic> errors = body['errors'];
+
+      String errorMessage = '';
+
+      errors.forEach((key, value) {
+        value.forEach((element) {
+          errorMessage += element + '\n';
+        });
+      });
+      throw Exception(errorMessage);
+    }
+
+    return RawMaterial.fromJSON(jsonDecode(response.body));
+  }
+  
+  Future<RawMaterial> updateRawMaterial( RawMaterial rawMaterial) async {
+    http.Response response = await http.put(
+        Uri.parse( '${baseUrl}raw-materials/${rawMaterial.id.toString()}'),
+    headers: {
+          HttpHeaders.acceptHeader: 'application/json',
+      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader: 'Bearer $token'
+    });
+
+    if ( response.statusCode != 200 ) {
+      throw Exception( 'Error updating raw material' );
+    }
+
+    return RawMaterial.fromJSON( jsonDecode( response.body));
   }
 }

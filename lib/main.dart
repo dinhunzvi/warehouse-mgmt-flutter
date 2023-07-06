@@ -6,6 +6,7 @@ import 'package:varichem_warehouse/providers/bin_location_provider.dart';
 import 'package:varichem_warehouse/providers/goods_received_voucher_provider.dart';
 import 'package:varichem_warehouse/providers/measurement_unit_provider.dart';
 import 'package:varichem_warehouse/providers/product_provider.dart';
+import 'package:varichem_warehouse/providers/raw_material_provider.dart';
 import 'package:varichem_warehouse/screens/auth/login.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
@@ -37,7 +38,9 @@ class MyApp extends StatelessWidget {
                   create: (context) => ProductProvider(authProvider)),
               ChangeNotifierProvider<GoodsReceivedVoucherProvider>(
                   create: (context) =>
-                      GoodsReceivedVoucherProvider(authProvider))
+                      GoodsReceivedVoucherProvider(authProvider)),
+              ChangeNotifierProvider<RawMaterialProvider>(
+                  create: ( context) => RawMaterialProvider(authProvider))
             ],
             child: MaterialApp(
               title: 'Varichem Pharmaceuticals',
