@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:varichem_warehouse/providers/auth_provider.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
-import 'package:varichem_warehouse/screens/measurement_units.dart';
 import 'package:varichem_warehouse/screens/products.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +15,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Widget> widgetOptions = const [
     BinLocations(),
-    MeasurementUnits(),
     Products(),
     GoodsReceivedVouchers()
   ];
@@ -46,12 +44,9 @@ class _HomeState extends State<Home> {
                   BottomNavigationBarItem(
                       label: 'Bin locations', icon: Icon(Icons.location_pin)),
                   BottomNavigationBarItem(
-                      label: 'Measurement units',
-                      icon: Icon(Icons.horizontal_rule)),
-                  BottomNavigationBarItem(
                       label: 'Products', icon: Icon(Icons.snippet_folder)),
                   BottomNavigationBarItem(
-                      label: 'Goods received vouchers',
+                      label: 'Receive products',
                       icon: Icon(Icons.folder_open)),
                   BottomNavigationBarItem(
                       label: 'Log out', icon: Icon(Icons.logout))

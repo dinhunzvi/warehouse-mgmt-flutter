@@ -77,7 +77,6 @@ class MyApp extends StatelessWidget {
                 },
                 '/login': (context) => const Login(),
                 '/products': (context) => const Products(),
-                '/measurement-units': (context) => const MeasurementUnits(),
                 '/bin-locations': (context) => const BinLocations(),
                 '/goods-received-vouchers': (context) =>
                     const GoodsReceivedVouchers()
