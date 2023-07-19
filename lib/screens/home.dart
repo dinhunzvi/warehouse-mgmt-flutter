@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:varichem_warehouse/providers/auth_provider.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
-import 'package:varichem_warehouse/screens/products.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Widget> widgetOptions = const [
     BinLocations(),
-    Products(),
+
     GoodsReceivedVouchers()
   ];
 

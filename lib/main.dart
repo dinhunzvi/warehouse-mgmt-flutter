@@ -11,8 +11,6 @@ import 'package:varichem_warehouse/screens/auth/login.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
 import 'package:varichem_warehouse/screens/home.dart';
-import 'package:varichem_warehouse/screens/measurement_units.dart';
-import 'package:varichem_warehouse/screens/products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,7 +74,6 @@ class MyApp extends StatelessWidget {
                   }
                 },
                 '/login': (context) => const Login(),
-                '/products': (context) => const Products(),
                 '/bin-locations': (context) => const BinLocations(),
                 '/goods-received-vouchers': (context) =>
                     const GoodsReceivedVouchers()
