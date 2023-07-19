@@ -11,6 +11,7 @@ import 'package:varichem_warehouse/screens/auth/login.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
 import 'package:varichem_warehouse/screens/home.dart';
+import 'package:varichem_warehouse/screens/raw_materials.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
                 },
                 '/login': (context) => const Login(),
                 '/bin-locations': (context) => const BinLocations(),
+                '/raw-materials': (context) => const RawMaterials(),
                 '/goods-received-vouchers': (context) =>
                     const GoodsReceivedVouchers()
               },

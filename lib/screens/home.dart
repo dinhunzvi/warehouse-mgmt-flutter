@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:varichem_warehouse/providers/auth_provider.dart';
 import 'package:varichem_warehouse/screens/bin_locations.dart';
 import 'package:varichem_warehouse/screens/goods_received_vouchers.dart';
+import 'package:varichem_warehouse/screens/raw_materials.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Widget> widgetOptions = const [
     BinLocations(),
-
+    RawMaterials(),
     GoodsReceivedVouchers()
   ];
 
@@ -43,9 +44,9 @@ class _HomeState extends State<Home> {
                   BottomNavigationBarItem(
                       label: 'Bin locations', icon: Icon(Icons.location_pin)),
                   BottomNavigationBarItem(
-                      label: 'Products', icon: Icon(Icons.snippet_folder)),
+                      label: 'Raw Materials', icon: Icon(Icons.snippet_folder)),
                   BottomNavigationBarItem(
-                      label: 'Receive products',
+                      label: 'Receive Raw Materials',
                       icon: Icon(Icons.folder_open)),
                   BottomNavigationBarItem(
                       label: 'Log out', icon: Icon(Icons.logout))
